@@ -203,7 +203,10 @@ public class Main {
 	    	mainMenu();
 	    }
 	    
-        coffeeMaker.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
+        boolean inventoryAdded = coffeeMaker.addInventory(amtCoffee, amtMilk, amtSugar, amtChocolate);
+        
+        if(inventoryAdded) System.out.println("Inventory successfully added.");
+	    else System.out.println("Inventory could not be added.");
         mainMenu();
     }
     
