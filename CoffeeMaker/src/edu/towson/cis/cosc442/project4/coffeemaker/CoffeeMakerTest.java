@@ -13,7 +13,6 @@ import static org.junit.Assert.*;
 public class CoffeeMakerTest {
 	private CoffeeMaker cm;
 	private Inventory i;
-	private Inventory i1;
 	private Recipe r1;
 	private Recipe r2;
 	
@@ -74,6 +73,68 @@ public class CoffeeMakerTest {
 	public void testPurchaseBeverage1() {
 		cm.addRecipe(r1);
 		assertEquals(0, cm.makeCoffee(r1, 50));
+	}
+	
+	@Test
+	public void testRecipeMutants() {
+		r2.setAmtCoffee(-1);
+		assertEquals(0, r2.getAmtCoffee());
+		r2.setAmtCoffee(0);
+		assertEquals(0, r2.getAmtCoffee());
+		r2.setAmtCoffee(2);
+		assertEquals(2, r2.getAmtCoffee());
+		
+		r2.setAmtChocolate(-1);
+		assertEquals(0, r2.getAmtChocolate());
+		r2.setAmtChocolate(0);
+		assertEquals(0, r2.getAmtChocolate());
+		r2.setAmtChocolate(-1);
+		assertNotEquals(-1, r2.getAmtChocolate());
+		
+		r2.setAmtMilk(-1);
+		assertEquals(0, r2.getAmtMilk());
+		r2.setAmtMilk(0);
+		assertEquals(0, r2.getAmtMilk());
+		r2.setAmtMilk(-1);
+		assertNotEquals(-1, r2.getAmtMilk());
+		
+		r2.setAmtSugar(-1);
+		assertEquals(0, r2.getAmtSugar());
+		r2.setAmtSugar(0);
+		assertEquals(0, r2.getAmtSugar());
+		r2.setAmtSugar(-1);
+		assertNotEquals(-1, r2.getAmtSugar());
+	}
+	
+	@Test
+	public void testInventoryMutants(){
+		i.setCoffee(-1);
+		assertEquals(0, i.getCoffee());
+		i.setCoffee(0);
+		assertEquals(0, i.getCoffee());
+		i.setCoffee(1);
+		assertEquals(1, i.getCoffee());
+		
+		i.setChocolate(-1);
+		assertEquals(0, i.getChocolate());
+		i.setChocolate(0);
+		assertEquals(0, i.getChocolate());
+		i.setChocolate(1);
+		assertEquals(1, i.getChocolate());
+		
+		i.setMilk(-1);
+		assertEquals(0, i.getMilk());
+		i.setMilk(0);
+		assertEquals(0, i.getMilk());
+		i.setMilk(1);
+		assertEquals(1, i.getMilk());
+		
+		i.setSugar(-1);
+		assertEquals(0, i.getSugar());
+		i.setSugar(0);
+		assertEquals(0, i.getSugar());
+		i.setSugar(1);
+		assertEquals(1, i.getSugar());
 	}
 	
 	/**
